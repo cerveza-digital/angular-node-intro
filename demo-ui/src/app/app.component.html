@@ -1,0 +1,32 @@
+<div class="app-container">
+<div>
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
+  <button type="submit" class="btn btn-primary submit-button" [disabled]="!form.valid">Submit</button>
+</form>
+</div>
+<div>
+  <ngx-datatable
+    class="bootstrap"
+    [columnMode]="ColumnMode.force"
+    [rows]="rows"
+    headerHeight="50"
+    footerHeight="0"
+    [rowHeight]="50"
+    >
+    <ngx-datatable-column name="Actions" sortable="false" prop="id">
+      <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+
+            <button class="btn btn-danger" (click)="onDelete(row)">
+             Delete
+            </button>
+
+      </ng-template>
+</ngx-datatable-column>
+    <ngx-datatable-column name="Id" prop="$loki" [width]="80"></ngx-datatable-column>
+    <ngx-datatable-column name="Name" [width]="300"></ngx-datatable-column>
+    <ngx-datatable-column name="Age"></ngx-datatable-column>
+    <ngx-datatable-column name="Description" [width]="500"></ngx-datatable-column>
+  </ngx-datatable>
+</div>
+</div>
